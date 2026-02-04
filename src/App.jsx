@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes } from "react-router";
+import { Route, Routes, Link } from "react-router";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import MailboxList from "./components/MailboxList";
@@ -21,10 +21,24 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<h1>Mailbox List</h1>} />
-        <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes} />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <h1>Mailbox List</h1>
+              <MailboxList mailboxes={mailboxes} />
+            </>
+          }
+        />
+        <Route
+          path="/mailboxes"
+          element={<MailboxList mailboxes={mailboxes} />}
+        />
         <Route path="/new-mailbox" element={<MailboxForm addBox={addBox} />} />
-        <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes} />} />
+        <Route
+          path="/mailboxes/:mailboxId"
+          element={<MailboxDetails mailboxes={mailboxes} />}
+        />
       </Routes>
     </>
   );
